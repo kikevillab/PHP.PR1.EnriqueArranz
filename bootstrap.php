@@ -29,6 +29,7 @@ function getEntityManager()
         null,               // Cache implementation
         false               // use Simple Annotation Reader
     );
+
     $config->setAutoGenerateProxyClasses(DEBUG);
     if (DEBUG) {
         $config->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());

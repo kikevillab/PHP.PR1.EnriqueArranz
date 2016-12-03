@@ -59,7 +59,7 @@ class Result implements \JsonSerializable
      * @param User $user
      * @param \DateTime $time
      */
-    public function __construct(int $result, User $user, \DateTime $time)
+    public function __construct($result, User $user, \DateTime $time)
     {
         $this->id     = 0;
         $this->result = $result;
@@ -71,16 +71,25 @@ class Result implements \JsonSerializable
      * @return string
      * @link http://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.tostring
      */
-    public function __toString(): string
+    public function __toString()
     {
-        // TODO
+        return 'Result: { id: ' . $this->id . ', result: ' . $this->result . ', user: '. $this->user . ', time: ' . $this->time . ' }'. PHP_EOL;
     }
 
     /**
      * @inheritDoc
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize()
     {
-        // TODO
+        return [
+            'id' => $this->id,
+            'result' => $this->result,
+            'user' => $this->result,
+            'time' => $this->time
+        ];
     }
+
+
 }
+
+

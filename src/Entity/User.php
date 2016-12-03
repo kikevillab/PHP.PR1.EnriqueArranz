@@ -86,16 +86,136 @@ class User implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function __toString(): string
+    public function __toString()
     {
-        // TODO
+       return 'User: { id: '.$this->id.', username:'.$this->username.', email:'.$this->email.', enabled:'.$this->enabled.', token:'.$this->token.'}'.PHP_EOL;
     }
 
     /**
      * @inheritDoc
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize()
     {
-        // TODO
+        return [
+            'id' => $this->id,
+            'username' => $this->username,
+            'email' => $this->email,
+            'enabled' => $this->enabled,
+            'token' => $this->token
+        ];
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param boolean $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param \DateTime $lastLogin
+     */
+    public function setLastLogin($lastLogin)
+    {
+        $this->lastLogin = $lastLogin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+
 }
