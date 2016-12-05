@@ -73,7 +73,7 @@ class Result implements \JsonSerializable
      */
     public function __toString()
     {
-        return 'Result: { id: ' . $this->id . ', result: ' . $this->result . ', user: '. $this->user . ', time: ' . $this->time . ' }'. PHP_EOL;
+        return 'Result: { id: ' . $this->id . ', result: ' . $this->result . ', user: '. $this->user . ', time: ' . $this->time->format('d-m-Y H:m:i') . ' }'. PHP_EOL;
     }
 
     /**
@@ -84,10 +84,75 @@ class Result implements \JsonSerializable
         return [
             'id' => $this->id,
             'result' => $this->result,
-            'user' => $this->result,
+            'user' => $this->user,
             'time' => $this->time
         ];
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * @param int $result
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param \DateTime $time
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
 
 
 }
