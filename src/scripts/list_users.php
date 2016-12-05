@@ -5,7 +5,22 @@ require_once __DIR__ . '/../../bootstrap.php';
 $entityManager = getEntityManager();
 
 $userRepository = $entityManager->getRepository('MiW16\Results\Entity\User');
-$users = $userRepository->findAll();
+
+if($argc == 1 || ($argc == 2 && in_array('--json', $argv))) {
+    $users = $userRepository->findAll();
+
+}elseif($argc >= 2){
+    if(!intval($argv[1])){
+        echo "El id_user debe ser un numero entero".PHP_EOL;
+        exit;
+    }
+
+    $users = $userRepository->findBy(array('id' => $argv[1]));
+
+}else{
+    echo "$argv[0] [<id_user>] [--json]".PHP_EOL;
+    exit;
+}
 
 if (in_array('--json', $argv)) {
     echo json_encode($users);
