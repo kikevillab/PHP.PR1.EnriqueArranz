@@ -15,3 +15,10 @@ define('DATABASE_CHARSET', 'UTF8');
 define('PROXY_DIR', '/xampp/tmp');
 define('ENTITY_DIR', __DIR__ . '/../Entity');
 define('DEBUG', false);  // muestra consulta SQL por la salida estándar
+
+/*
+ * Configuracion rutas archivos
+ */
+define('ROUTE_FILE', __DIR__ . '/routes.yml');
+define('VIEW_DIR', __DIR__ . '/../view');
+

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Results - show users</title>
+        <script>
+            function changeUrl(option){
+                var form = document.getElementById('user_detail_form'),
+                    route = form.action.split('/').reverse()[1];
+
+                form.action = route + '/' + option;
+
+                form.submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="<?=$user->getId()?>/" id="user_detail_form" method="POST">
+            <input type="hidden" name="id" value="<?=$user->getId()?>">
+            <label>Username</label>
+            <input type="text" name="username" value="<?=$user->getUsername()?>">
+            <br/>
+            <label>Email</label>
+            <input type="text" name="email" value="<?=$user->getEmail()?>">
+            <br/>
+            <label>Enabled</label><input type="radio" name="enabled" value="true" <?=$user->isEnabled() ? 'checked' : '' ?>>
+            <label>Disabled</label><input type="radio" name="enabled" value="false" <?=!$user->isEnabled() ? 'checked' : '' ?>>
+            <br/>
+            <label>Password</label>
+            <input type="password" name="password" value="<?=$user->getPassword()?>">
+            <br/>
+            <label>Last login</label>
+            <input type="text" value="<?=$user->getLastLogin()?>">
+            <br/>
+            <label>Token</label>
+            <input type="text" value="<?=$user->getToken()?>">
+            <br/>
+            <a href="javascript::" onclick="changeUrl('remove')">Eliminar</a>
+            <a href="javascript::" onclick="changeUrl('update')">Actualizar</a>
+
+        </form>
+
+    </body>
+
+</html>

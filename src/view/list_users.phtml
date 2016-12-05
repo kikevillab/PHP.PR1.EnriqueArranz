@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Results - show users</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <?php
+                /** @var \MiW16\Results\Entity\User $user */
+                foreach($users as $user) { ?>
+                <tr>
+                    <td><?=$user->getId()?></td>
+                    <td><?=$user->getUsername()?></td>
+                    <td><?=$user->getEmail()?></td>
+                    <td><?=$user->isEnabled()?></td>
+                    <td>
+                        <?php var_dump($this->routes->get('show_user'));?>
+                        <a href="<?=$this->routes->get('show_user')->getPath()?>"> Ver </a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </body>
+</html>
+
