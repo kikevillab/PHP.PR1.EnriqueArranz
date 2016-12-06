@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Results - add result</title>
+    </head>
+    <body>
+        <form action="#" id="result_add_form" method="POST">
+            <label>Resultado</label>
+            <input type="text" name="result" value="" required>
+            <br/>
+            <label>Time</label>
+            <input type="date" name="time" value="">
+            <br/>
+            <label>User</label>
+            <select name="user">
+                <?php foreach ($users as $user){?>
+                    <option value="<?=$user->getId()?>"><?=$user->getUsername()?></option>
+                <?php } ?>
+            </select>
+
+            <br/>
+            <button type="submit">Añadir</button>
+        </form>
+    </body>
+</html>

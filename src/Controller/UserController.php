@@ -2,25 +2,14 @@
 namespace MiW16\Results\Controller;
 
 use MiW16\Results\Entity\User;
-use Symfony\Component\Routing\Generator\UrlGenerator;
-use Symfony\Component\Routing\RequestContext;
 /**
  * Created by PhpStorm.
  * User: Enrique
  * Date: 05/12/2016
  * Time: 17:46
  */
-class UserController
+class UserController extends AbstractController
 {
-
-    protected $routes;
-    protected $urlGenerator;
-
-    public function __construct($routes)
-    {
-        $this->routes = $routes;
-        $this->urlGenerator = new UrlGenerator($this->routes, new RequestContext('/public'));
-    }
 
     public function showAllAction()
     {
@@ -29,7 +18,7 @@ class UserController
         $userRepository = $entityManager->getRepository('MiW16\Results\Entity\User');
         $users = $userRepository->findAll();
 
-        include(VIEW_DIR . '/list_users.phtml');
+        include(VIEW_DIR . '/user/list_users.phtml');
     }
 
     public function showOneAction($idUser)
@@ -39,13 +28,13 @@ class UserController
         $userRepository = $entityManager->getRepository('MiW16\Results\Entity\User');
         $user = $userRepository->findOneById($idUser);
 
-        include(VIEW_DIR . '/list_one_user.phtml');
+        include(VIEW_DIR . '/user/list_one_user.phtml');
     }
 
     public function addUserAction()
     {
         if(empty($_POST)){
-            include(VIEW_DIR . '/add_user_form.phtml');
+            include(VIEW_DIR . '/user/add_user_form.phtml');
             exit;
         }
 
@@ -61,8 +50,7 @@ class UserController
 
         echo "Usuario ". $_POST['username'] ." creado correctamente";
         sleep(2);
-        header("Location: ".$this->urlGenerator->generate('list_users'));
-        exit;
+        $this->toRoute('list_users');
     }
 
     public function removeUserAction($idUser)
@@ -82,8 +70,7 @@ class UserController
 
         echo "Usuario borrado correctamente";
         sleep(2);
-        header("Location: ".$this->urlGenerator->generate('list_users'));
-        exit;
+        $this->toRoute('list_users');
 
     }
 
@@ -104,7 +91,6 @@ class UserController
 
         echo "Usuario actualizado correctamente";
         sleep(2);
-        header("Location: ".$this->urlGenerator->generate('list_users'));
-        exit;
+        $this->toRoute('list_users');
     }
 }

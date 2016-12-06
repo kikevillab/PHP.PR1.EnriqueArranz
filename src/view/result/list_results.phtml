@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Results - show results</title>
+    </head>
+    <body>
+        <h1>Resultados</h1>
+        <hr>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Result</th>
+                <th>Time</th>
+                <th>User</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <?php
+                /** @var \MiW16\Results\Entity\Result $result */
+                foreach($results as $result) { ?>
+                <tr>
+                    <td><?=$result->getId()?></td>
+                    <td><?=$result->getResult()?></td>
+                    <td><?=$result->getTime()->format('d-m-Y')?></td>
+                    <td><?=$result->getUser()->getUsername()?></td>
+                    <td>
+                        <a href="<?=$this->urlGenerator->generate('show_result', array('id_result' => $result->getId()))?>"> Ver </a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+            <tfooter>
+                <td colspan="5">Total: <?=sizeof($results)?> results</td>
+            </tfooter>
+        </table>
+        <hr>
+        <a href="<?=$this->urlGenerator->generate('add_result')?>"> Añadir un resultado </a>
+    </body>
+</html>
+
