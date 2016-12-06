@@ -16,7 +16,7 @@
         <form action="<?=$user->getId()?>/" id="user_detail_form" method="POST">
             <input type="hidden" name="id" value="<?=$user->getId()?>">
             <label>Username</label>
-            <input type="text" name="username" value="<?=$user->getUsername()?>">
+            <input type="text" name="username" value="<?=$user->getUsername()?>" disabled="disabled">
             <br/>
             <label>Email</label>
             <input type="text" name="email" value="<?=$user->getEmail()?>">
@@ -28,10 +28,10 @@
             <input type="password" name="password" value="<?=$user->getPassword()?>">
             <br/>
             <label>Last login</label>
-            <input type="text" value="<?=$user->getLastLogin()?>">
+            <input type="text" value="<?=$user->getLastLogin()?>" disabled="disabled">
             <br/>
             <label>Token</label>
-            <input type="text" value="<?=$user->getToken()?>">
+            <input type="text" value="<?=$user->getToken()?>" disabled="disabled">
             <br/>
             <a href="javascript::" onclick="changeUrl('remove')">Eliminar</a>
             <a href="javascript::" onclick="changeUrl('update')">Actualizar</a>

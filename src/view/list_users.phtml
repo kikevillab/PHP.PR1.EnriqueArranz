@@ -3,6 +3,8 @@
         <title>Results - show users</title>
     </head>
     <body>
+        <h1>Usuarios</h1>
+        <hr>
         <table>
             <thead>
                 <th>Id</th>
@@ -21,13 +23,17 @@
                     <td><?=$user->getEmail()?></td>
                     <td><?=$user->isEnabled()?></td>
                     <td>
-                        <?php var_dump($this->routes->get('show_user'));?>
-                        <a href="<?=$this->routes->get('show_user')->getPath()?>"> Ver </a>
+                        <a href="<?=$this->urlGenerator->generate('show_user', array('id_user' => $user->getId()))?>"> Ver </a>
                     </td>
                 </tr>
                 <?php } ?>
             </tbody>
+            <tfooter>
+                <td colspan="5">Total: <?=sizeof($users)?> users</td>
+            </tfooter>
         </table>
+        <hr>
+        <a href="<?=$this->urlGenerator->generate('add_user')?>"> Añadir un usuario </a>
     </body>
 </html>
 

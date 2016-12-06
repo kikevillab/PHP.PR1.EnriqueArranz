@@ -3,13 +3,13 @@ list_users:
     path:     /users
     defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'showAllAction' }
 
-show_user:
-    path:     /users/{id_user}
-    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'showOneAction', _param: 'id_user' }
-
 add_user:
     path:     /users/add
     defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'addUserAction' }
+
+show_user:
+    path:     /users/{id_user}
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'showOneAction', _param: 'id_user' }
 
 remove_user:
     path:     /users/{id_user}/remove
