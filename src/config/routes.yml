@@ -1,0 +1,41 @@
+# routes.yml
+list_users:
+    path:     /users
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'showAllAction' }
+
+add_user:
+    path:     /users/add
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'addUserAction' }
+
+show_user:
+    path:     /users/{id_user}
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'showOneAction', _param: 'id_user' }
+
+remove_user:
+    path:     /users/{id_user}/remove
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'removeUserAction', _param: 'id_user' }
+
+update_user:
+    path:     /users/{id_user}/update
+    defaults: { _controller: 'MiW16\Results\Controller\UserController', _action: 'updateUserAction', _param: 'id_user' }
+
+list_results:
+    path:     /results
+    defaults: { _controller: 'MiW16\Results\Controller\ResultController', _action: 'showAllAction' }
+
+add_result:
+    path:     /results/add
+    defaults: { _controller: 'MiW16\Results\Controller\ResultController', _action: 'addResultAction' }
+
+show_result:
+    path:     /results/{id_result}
+    defaults: { _controller: 'MiW16\Results\Controller\ResultController', _action: 'showOneAction', _param: 'id_result' }
+
+remove_result:
+    path:     /results/{id_result}/remove
+    defaults: { _controller: 'MiW16\Results\Controller\ResultController', _action: 'removeResultAction', _param: 'id_result' }
+
+update_result:
+    path:     /results/{id_result}/update
+    defaults: { _controller: 'MiW16\Results\Controller\ResultController', _action: 'updateResultAction', _param: 'id_result' }
+

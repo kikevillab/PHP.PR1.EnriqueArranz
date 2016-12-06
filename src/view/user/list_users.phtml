@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Results - show users</title>
+    </head>
+    <body>
+        <h1>Usuarios</h1>
+        <hr>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <?php
+                /** @var \MiW16\Results\Entity\User $user */
+                foreach($users as $user) { ?>
+                <tr>
+                    <td><?=$user->getId()?></td>
+                    <td><?=$user->getUsername()?></td>
+                    <td><?=$user->getEmail()?></td>
+                    <td><?=$user->isEnabled()?></td>
+                    <td>
+                        <a href="<?=$this->urlGenerator->generate('show_user', array('id_user' => $user->getId()))?>"> Ver </a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+            <tfooter>
+                <td colspan="5">Total: <?=sizeof($users)?> users</td>
+            </tfooter>
+        </table>
+        <hr>
+        <a href="<?=$this->urlGenerator->generate('add_user')?>"> Añadir un usuario </a>
+    </body>
+</html>
+

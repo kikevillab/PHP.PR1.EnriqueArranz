@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Results - show result</title>
+        <script>
+            function changeUrl(option){
+                var form = document.getElementById('user_detail_form'),
+                    route = form.action.split('/').reverse()[1];
+
+                form.action = route + '/' + option;
+
+                form.submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="<?=$result->getId()?>/" id="user_detail_form" method="POST">
+            <label>Resultado</label>
+            <input type="text" name="result" value="<?=$result->getResult()?>" required>
+            <br/>
+            <label>Time</label>
+            <input type="date" name="time" value="<?=$result->getTime()->format('d-m-Y')?>" disabled>
+            <br/>
+            <label>User</label>
+            <input type="text" value="<?=$result->getUser()->getUsername()?>" disabled>
+            <br/>
+            <a href="javascript::" onclick="changeUrl('remove')">Eliminar</a>
+            <a href="javascript::" onclick="changeUrl('update')">Actualizar</a>
+
+        </form>
+
+    </body>
+
+</html>
